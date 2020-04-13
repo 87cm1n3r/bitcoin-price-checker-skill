@@ -11,6 +11,7 @@ class BitcoinPriceChecker(MycroftSkill):
         r = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
         j = json.loads(r.content)
         d, c = str(j['bpi']['USD']['rate_float']).split('.')
+        c = c[:2]
 
         self.speak_dialog(d + ' dollars and ' + c + ' cents')
 
